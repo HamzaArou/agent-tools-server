@@ -1,0 +1,21 @@
+services:
+  - name: agent-tools-server
+    type: web
+    plan: free
+    runtime: node
+    region: oregon
+    buildCommand: "npm install"
+    startCommand: "node server.js"
+    envVars:
+      # Provide your Google service account JSON as a base64 encoded string
+      - key: GSA_BASE64
+        sync: false
+      # ID of the Google spreadsheet to append rows to
+      - key: SHEET_ID
+        sync: false
+      # Name of the sheet/tab inside the spreadsheet
+      - key: SHEET_NAME
+        sync: false
+      # Base URL for constructing absolute links; defaults to Yupoo host if not specified
+      - key: BASE_URL
+        sync: false
